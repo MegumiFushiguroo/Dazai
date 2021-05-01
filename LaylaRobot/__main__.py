@@ -199,7 +199,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="👰 Add ASUNA to your group",
+                            text="👰 Add Eliza to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
@@ -214,7 +214,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="☑️ Source code",
-                             url="https://github.com/sadhanhori/ASUNA_ROBOT")
+                             url="https://github.com/kari-36/ElizaRobot")
                      ]]))
     else:
         update.effective_message.reply_text(
