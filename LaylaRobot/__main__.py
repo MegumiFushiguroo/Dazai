@@ -56,7 +56,7 @@ Hi {}, my name is {}!
 You can find my list of available commands with /help.
 i'm a group manager bot. 
 
-Developed By- [『DC』ᵀᵉᵃᵐ★ᎳᎪᏒᏒᎥᎾᏒ★](https://t.me/DEBOJYOTINO1)
+Developed By- [™Zero hero™](https://t.me/zero4574)
 
 """
 
@@ -208,8 +208,8 @@ def start(update: Update, context: CallbackContext):
                              text="Support Group",
                              url=f"https://t.me/Elizasupport"),
                          InlineKeyboardButton(
-                             text="CHAT WITH ANIME LOVERS",
-                             url="https://t.me/Elizegbanlogs")
+                             text="Logs channel",
+                             url="https://t.me/ElizeGbanlogs")
                      ],
                      [
                          InlineKeyboardButton(
