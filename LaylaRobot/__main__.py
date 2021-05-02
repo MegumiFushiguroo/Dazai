@@ -206,10 +206,10 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="Support Group",
-                             url=f"https://t.me/Animeweebs2"),
+                             url=f"https://t.me/Elizasupport"),
                          InlineKeyboardButton(
                              text="CHAT WITH ANIME LOVERS",
-                             url="https://t.me/Animeweebs2")
+                             url="https://t.me/Elizegbanlogs")
                      ],
                      [
                          InlineKeyboardButton(
