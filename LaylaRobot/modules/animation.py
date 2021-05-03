@@ -347,11 +347,6 @@ def kill(update: Update, context: CallbackContext):
         time.sleep(EDIT_SLEEP)
     msg.edit_text('⚰')
 
-__help__ = """
-- /love ❣️
-- /hack 👨‍💻
-- /bombs 💣
-"""
 KILL_HANDLER = DisableAbleCommandHandler("kill",kill)
 LOVE_HANDLER = DisableAbleCommandHandler("love", love)
 HACK_HANDLER = DisableAbleCommandHandler("hack", hack)
