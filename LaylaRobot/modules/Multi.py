@@ -14,6 +14,13 @@ __help__ = """
 Hi I can send gps location..
 
  ❍ /gps <location>: Get gps location
+
+*Here is the help for the telegraph module:*
+
+I can upload files to Telegraph
+ ❍ /tm :Get Telegraph Link Of Replied Media
+ ❍ /txt :Get Telegraph Link of Replied Text
+
 """
 
 __mod_name__ = "Multi"
