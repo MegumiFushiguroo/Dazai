@@ -6,11 +6,11 @@ from telegram import ParseMode, Update, ChatPermissions
 from telegram.ext import CallbackContext, run_async
 from telegram.error import BadRequest
 
-import SaitamaRobot.modules.animequotes_strings as animequotes_strings
-from SaitamaRobot import dispatcher
-from SaitamaRobot.modules.disable import DisableAbleCommandHandler
-from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin)
-from SaitamaRobot.modules.helper_funcs.extraction import extract_user
+import LaylaRobot.modules.animequotes_strings as animequotes_strings
+from LaylaRobot import dispatcher
+from LaylaRobot.modules.disable import DisableAbleCommandHandler
+from LaylaRobot.modules.helper_funcs.chat_status import (is_user_admin)
+from LaylaRobot.modules.helper_funcs.extraction import extract_user
 
 @run_async
 def animequotes(update: Update, context: CallbackContext):
