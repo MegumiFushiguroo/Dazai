@@ -1,5 +1,5 @@
-from LaylaRoBot.events import register
-from LaylaRoBot import telethn as tbot
+from LaylaRobot.events import register
+from LaylaRobot import telethn as tbot
 TMP_DOWNLOAD_DIRECTORY = "./"
 from telethon import events
 import os
