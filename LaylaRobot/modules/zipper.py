@@ -7,7 +7,7 @@ from telethon.tl import functions
 
 from LaylaRobot import TEMP_DOWNLOAD_DIRECTORY
 from LaylaRobot import telethn as client
-from LaylaRobot.laylabot import register
+from LaylaRobot.events import register
 
 
 async def is_register_admin(chat, user):
