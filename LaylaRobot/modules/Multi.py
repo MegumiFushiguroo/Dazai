@@ -1,10 +1,19 @@
 __help__ = """
-*Link To File:*
- • `/up`*:* reply to a direct download link to upload it to telegram as files
- 
- *File To Link:*
- ⦁ `/transfersh`*:* reply to a telegram file to upload it on transfersh and get direct download link
- ⦁ `/tmpninja`*:* reply to a telegram file to upload it on tmpninja and get direct download link
+*Here is the help for the Animation module:*
+
+- /love ❣️
+- /hack 👨‍💻
+- /bombs 💣
+
+*Here is the help for the AnimeQuotes module:*
+
+ • /animequotes: gives random anime quotes
+
+*Here is the help for the GPS module:*
+
+Hi I can send gps location..
+
+ ❍ /gps <location>: Get gps location
 """
 
 __mod_name__ = "Multi"
