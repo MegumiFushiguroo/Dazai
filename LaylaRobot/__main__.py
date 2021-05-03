@@ -214,7 +214,7 @@ def start(update: Update, context: CallbackContext):
                      [
                          InlineKeyboardButton(
                              text="☑️ Source code",
-                             url="https://github.com/kari-36/Rembot")
+                             url="https://github.com/kari-36/ElizaRobot")
                      ]]))
     else:
         update.effective_message.reply_text(
