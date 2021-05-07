@@ -8,7 +8,7 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import LaylaRobot.modules.sql.global_mutes_sql as sql
-from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, SUDO_USERS, SUPPORT_USERS, STRICT_GMUTE, GBAN_LOGS
+from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, DEMONS, SUPPORT_USERS, STRICT_GMUTE, EVENT_LOGS
 from LaylaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from LaylaRobot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from LaylaRobot.modules.helper_funcs.filters import CustomFilters
