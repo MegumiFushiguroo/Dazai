@@ -145,7 +145,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                 pass
             else:
                 message.reply_text("Could not gmute due to: {}".format(excp.message))
-                send_to_list(bot, SUDO_USERS + DEV_USERS, "Could not gmute due to: {}".format(excp.message))
+                send_to_list(bot, DEMOnS + DEV_USERS, "Could not gmute due to: {}".format(excp.message))
                 sql.ungmute_user(user_id)
                 return
         except TelegramError:
@@ -155,8 +155,8 @@ def gmute(bot: Bot, update: Update, args: List[str]):
             log_message +
             f"\n<b>Chats affected:</b> {gmuted_chats}",
             parse_mode=ParseMode.HTML)    
-    else:
-        send_to_list(bot, SUDO_USERS + DEV_USERS, 
+    else: 
+        send_to_list(bot, DEMONS + DEV_USERS, 
                   "{} has been successfully gmuted!".format(mention_html(user_chat.id, user_chat.first_name)),
                 html=True)
 
@@ -369,7 +369,7 @@ you and your groups by removing spam flooders as quickly as possible. They can b
 
 """
 
-__mod_name__ = "GLOBAL MUTES"
+__mod_name__ = "GMUTES"
 
 GMUTE_HANDLER = CommandHandler("gmute", gmute, pass_args=True,
                               filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
