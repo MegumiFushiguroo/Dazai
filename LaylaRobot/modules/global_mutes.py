@@ -32,7 +32,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("You trying to gmute my Owner..huh??")
         return
 
-    if int(user_id) in SUDO_USERS:
+    if int(user_id) in DEMONS:
         message.reply_text("You trying to gmute my sudo..huh??")
         return
 
@@ -40,7 +40,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("You trying to gmute a Dev user!")
         return
     
-    if int(user_id) in SUPPORT_USERS:
+    if int(user_id) in DRAGONS:
         message.reply_text("You trying to gmute a support user!S")
         return
     
