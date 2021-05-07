@@ -8,7 +8,7 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import LaylaRobot.modules.sql.global_mutes_sql as sql
-from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, DEMONS, SUPPORT_USERS, STRICT_GMUTE, EVENT_LOGS
+from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, DEMONS, DRAGONS, STRICT_GMUTE, EVENT_LOGS
 from LaylaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from LaylaRobot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from LaylaRobot.modules.helper_funcs.filters import CustomFilters
@@ -90,10 +90,10 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                                                            user_chat.id, reason or "No reason given"))
 
 
-    if GBAN_LOGS:
+    if EVENT_LOGS:
         try:
             log = bot.send_message(
-                GBAN_LOGS, log_message, parse_mode=ParseMode.HTML)
+                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as e:
             print(e)
             log = bot.send_message(
@@ -150,7 +150,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                 return
         except TelegramError:
             pass
-    if GBAN_LOGS:
+    if EVENT_LOGS:
         log.edit_text(
             log_message +
             f"\n<b>Chats affected:</b> {gmuted_chats}",
@@ -196,19 +196,19 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                                                        mention_html(user_chat.id, user_chat.first_name), 
                                                                     user_chat.id))
 
-    if GBAN_LOGS:
+    if EVENT_LOGS:
         try:
             log = bot.send_message(
                 GBAN_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as e:
             print(e)
             log = bot.send_message(
-                GBAN_LOGS,
+                EVENT_LOGS,
                 log_message +
                 "\n\nFormatting has been disabled due to an unexpected error.")
 
     else:
-        send_to_list(bot, SUDO_USERS + DEV_USERS, log_message, html=True)
+        send_to_list(bot, DEMONS + DEV_USERS, log_message, html=True)
     
     chats = get_all_chats()
     ungmuted_chats = 0
@@ -255,7 +255,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
             pass
 
     sql.ungmute_user(user_id)
-    if GBAN_LOGS:
+    if EVENT_LOGS:
         log.edit_text(
             log_message +
             f"\n<b>Chats affected:</b> {ungmuted_chats}",
