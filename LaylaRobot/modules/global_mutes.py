@@ -8,7 +8,7 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import LaylaRobot.modules.sql.global_mutes_sql as sql
-from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, DEMONS, DRAGONS, STRICT_GMUTE, EVENT_LOGS
+from LaylaRobot import dispatcher, OWNER_ID, DEV_USERS, SUDO_USERS, SUPPORT_USERS, STRICT_GMUTE, GBAN_LOGS
 from LaylaRobot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from LaylaRobot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from LaylaRobot.modules.helper_funcs.filters import CustomFilters
@@ -32,7 +32,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("You trying to gmute my Owner..huh??")
         return
 
-    if int(user_id) in DEMONS:
+    if int(user_id) in SUDO_USERS:
         message.reply_text("You trying to gmute my sudo..huh??")
         return
 
@@ -40,7 +40,7 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         message.reply_text("You trying to gmute a Dev user!")
         return
     
-    if int(user_id) in DRAGONS:
+    if int(user_id) in SUPPORT_USERS:
         message.reply_text("You trying to gmute a support user!S")
         return
     
@@ -90,19 +90,19 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                                                            user_chat.id, reason or "No reason given"))
 
 
-    if EVENT_LOGS:
+    if GBAN_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
+                GBAN_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as e:
             print(e)
             log = bot.send_message(
-                EVENT_LOGS,
+                GBAN_LOGS,
                 log_message +
                 "\n\nFormatting has been disabled due to an unexpected error.")
 
     else:
-        send_to_list(bot, DEMONS + DEV_USERS, log_message, html=True)
+        send_to_list(bot, SUDO_USERS + DEV_USERS, log_message, html=True)
         
     sql.gmute_user(user_id, user_chat.username or user_chat.first_name, reason)
 
@@ -145,18 +145,18 @@ def gmute(bot: Bot, update: Update, args: List[str]):
                 pass
             else:
                 message.reply_text("Could not gmute due to: {}".format(excp.message))
-                send_to_list(bot, DEMONS + DEV_USERS, "Could not gmute due to: {}".format(excp.message))
+                send_to_list(bot, SUDO_USERS + DEV_USERS, "Could not gmute due to: {}".format(excp.message))
                 sql.ungmute_user(user_id)
                 return
         except TelegramError:
             pass
-    if EVENT_LOGS:
+    if GBAN_LOGS:
         log.edit_text(
             log_message +
             f"\n<b>Chats affected:</b> {gmuted_chats}",
             parse_mode=ParseMode.HTML)    
-    else: 
-        send_to_list(bot, DEMONS + DEV_USERS, 
+    else:
+        send_to_list(bot, SUDO_USERS + DEV_USERS, 
                   "{} has been successfully gmuted!".format(mention_html(user_chat.id, user_chat.first_name)),
                 html=True)
 
@@ -196,19 +196,19 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                                                        mention_html(user_chat.id, user_chat.first_name), 
                                                                     user_chat.id))
 
-    if EVENT_LOGS:
+    if GBAN_LOGS:
         try:
             log = bot.send_message(
-                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
+                GBAN_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as e:
             print(e)
             log = bot.send_message(
-                EVENT_LOGS,
+                GBAN_LOGS,
                 log_message +
                 "\n\nFormatting has been disabled due to an unexpected error.")
 
     else:
-        send_to_list(bot, DEMONS + DEV_USERS, log_message, html=True)
+        send_to_list(bot, SUDO_USERS + DEV_USERS, log_message, html=True)
     
     chats = get_all_chats()
     ungmuted_chats = 0
@@ -255,13 +255,13 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
             pass
 
     sql.ungmute_user(user_id)
-    if EVENT_LOGS:
+    if GBAN_LOGS:
         log.edit_text(
             log_message +
             f"\n<b>Chats affected:</b> {ungmuted_chats}",
             parse_mode=ParseMode.HTML)
     else:
-        send_to_list(bot, DEMONS + DEV_USERS, 
+        send_to_list(bot, SUDO_USERS + DEV_USERS, 
                   "{} has been successfully un-gmuted!".format(mention_html(user_chat.id, 
                                                                          user_chat.first_name)),
                   html=True)
@@ -369,7 +369,7 @@ you and your groups by removing spam flooders as quickly as possible. They can b
 
 """
 
-__mod_name__ = "GMUTES"
+__mod_name__ = "GLOBAL MUTES"
 
 GMUTE_HANDLER = CommandHandler("gmute", gmute, pass_args=True,
                               filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
