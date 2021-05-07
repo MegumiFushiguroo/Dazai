@@ -199,7 +199,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
     if EVENT_LOGS:
         try:
             log = bot.send_message(
-                GBAN_LOGS, log_message, parse_mode=ParseMode.HTML)
+                EVENT_LOGS, log_message, parse_mode=ParseMode.HTML)
         except BadRequest as e:
             print(e)
             log = bot.send_message(
@@ -261,7 +261,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
             f"\n<b>Chats affected:</b> {ungmuted_chats}",
             parse_mode=ParseMode.HTML)
     else:
-        send_to_list(bot, SUDO_USERS + DEV_USERS, 
+        send_to_list(bot, DeMONS + DEV_USERS, 
                   "{} has been successfully un-gmuted!".format(mention_html(user_chat.id, 
                                                                          user_chat.first_name)),
                   html=True)
