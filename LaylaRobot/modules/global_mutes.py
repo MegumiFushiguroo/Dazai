@@ -208,7 +208,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                 "\n\nFormatting has been disabled due to an unexpected error.")
 
     else:
-        send_to_list(bot, SUDO_USERS + DEV_USERS, log_message, html=True)
+        send_to_list(bot, DRAGONS + DEV_USERS, log_message, html=True)
     
     chats = get_all_chats()
     ungmuted_chats = 0
