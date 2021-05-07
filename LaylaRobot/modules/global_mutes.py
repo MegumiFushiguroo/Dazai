@@ -97,12 +97,12 @@ def gmute(bot: Bot, update: Update, args: List[str]):
         except BadRequest as e:
             print(e)
             log = bot.send_message(
-                GBAN_LOGS,
+                EVENT_LOGS,
                 log_message +
                 "\n\nFormatting has been disabled due to an unexpected error.")
 
     else:
-        send_to_list(bot, SUDO_USERS + DEV_USERS, log_message, html=True)
+        send_to_list(bot, DEMONS + DEV_USERS, log_message, html=True)
         
     sql.gmute_user(user_id, user_chat.username or user_chat.first_name, reason)
 
